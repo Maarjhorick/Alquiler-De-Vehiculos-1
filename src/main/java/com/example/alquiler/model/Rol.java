@@ -12,36 +12,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "tiposvehiculo")
+@Table(name = "roles")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
-package com.example.alquiler.model;
-
-import jakarta.persistence.*;
-import lombok.*;
-
-@Entity
-@Table(name = "tiposvehiculo")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
- main
-public class TipoVehiculo {
+public class Rol {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idTipo;
+    private Integer idRol;
 
-    @Column(name = "nombre_tipo", nullable = false, unique = true)
+    @Column(nullable = false, length = 50)
+    private String nombreRol;
 
-    @Column(name = "id_tipo")
-    private Integer idTipo;
-
-    @Column(name = "nombre_tipo", length = 50, nullable = false)
- main
-    private String nombreTipo;
+    @Column(length = 150)
+    private String descripcion;
 }

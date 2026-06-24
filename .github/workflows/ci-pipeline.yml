@@ -2,7 +2,7 @@ name: CI DevSecOps Alquiler Vehiculos
 
 on:
   pull_request:
-    [cite_start]branches: [ "develop", "main" ] [cite: 571, 574]
+    branches: [ "develop", "main" ]
 
 jobs:
   build-and-test:

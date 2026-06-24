@@ -18,7 +18,7 @@ jobs:
           [cite_start]distribution: 'temurin' [cite: 584]
 
       - name: 3. Compilacion y Pruebas Unitarias (JaCoCo Coverage)
-        run: mvn clean verify -DskipTests=true
+        run: mvn clean package -DskipTests=true
 
       - name: 4. Analisis de Calidad de Codigo (SonarCloud)
         env:

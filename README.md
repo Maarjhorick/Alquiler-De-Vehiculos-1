@@ -1,6 +1,6 @@
 Título del Proyecto
 
-Sistema web para la gestión de alquiler de vehículos en una empresa de transporte
+Sistema web para la gestión de alquiler de vehículos
 
 Integrantes
 - Bravo Rosales, Stefano Teofanos
@@ -12,7 +12,7 @@ Universidad
 Universidad Tecnologica del Peru (UTP)
 
 Fecha
-Inicio: 26 Marzo
+Inicio: 20 abril
 Fin: Julio
 
 Agradecimiento y Dedicatoria
@@ -21,7 +21,7 @@ Agradecemos al docente del curso por su orientación durante el desarrollo del p
 
 Resumen
 
-El presente proyecto consiste en el desarrollo de un sistema web para la gestión de alquiler de vehículos en una empresa de transporte. La solución busca automatizar los procesos de registro, control y seguimiento de vehículos, clientes y alquileres, permitiendo mejorar la eficiencia operativa y reducir errores en la gestión manual.
+El presente proyecto consiste en el desarrollo de un sistema web para la gestión de alquiler de vehículos. La solución busca automatizar los procesos de registro, control y seguimiento de vehículos, clientes y alquileres, permitiendo mejorar la eficiencia operativa y reducir errores en la gestión manual.
 
 El sistema estará basado en una arquitectura REST utilizando Spring Boot, permitiendo la gestión de información mediante servicios web. Además, se implementará una base de datos relacional para almacenar y organizar los datos de manera estructurada.
 

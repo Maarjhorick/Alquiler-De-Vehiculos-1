@@ -18,6 +18,20 @@ import jakarta.validation.constraints.PositiveOrZero;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
+package com.example.alquiler.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+import java.math.BigDecimal;
+
+@Entity
+@Table(name = "vehiculos")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+ main
 public class Vehiculo {
 
     @Id
@@ -31,6 +45,12 @@ public class Vehiculo {
 
     @Column(length = 50)
     @NotBlank
+
+    @Column(name = "placa", length = 15, nullable = false, unique = true)
+    private String placa;
+
+    @Column(name = "color", length = 30)
+ main
     private String color;
 
     @Column(name = "anio")
@@ -59,6 +79,22 @@ public class Vehiculo {
     @JoinColumn(name = "id_modelo", nullable = false)
     @NotNull
     @Valid
+
+    @Column(name = "numero_motor", length = 30)
+    private String numeroMotor;
+
+    @Column(name = "numero_vin", length = 17)
+    private String numeroVin;
+
+    @Column(name = "precio_dia", precision = 10, scale = 2)
+    private BigDecimal precioDia;
+
+    @Column(name = "precio_hora", precision = 10, scale = 2)
+    private BigDecimal precioHora;
+
+    @ManyToOne
+    @JoinColumn(name = "id_modelo", nullable = false)
+ main
     private Modelo modelo;
 
     @ManyToOne
@@ -71,6 +107,12 @@ public class Vehiculo {
     @JoinColumn(name = "id_combustible", nullable = false)
     @NotNull
     @Valid
+
+    private TipoVehiculo tipoVehiculo;
+
+    @ManyToOne
+    @JoinColumn(name = "id_combustible", nullable = false)
+ main
     private Combustible combustible;
 
     @ManyToOne
@@ -79,4 +121,7 @@ public class Vehiculo {
     @Valid
     private EstadoVehiculo estado;
 
+
+    private EstadoVehiculo estadoVehiculo;
+ main
 }

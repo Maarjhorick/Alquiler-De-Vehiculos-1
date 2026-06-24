@@ -19,6 +19,18 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+package com.example.alquiler.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Table(name = "modelos")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+ main
 public class Modelo {
 
     @Id
@@ -31,4 +43,14 @@ public class Modelo {
      @ManyToOne
      @JoinColumn(name = "id_marca", nullable = false)
      private Marca marca;
+    @Column(name = "id_modelo")
+    private Integer idModelo;
+
+    @ManyToOne
+    @JoinColumn(name = "id_marca", nullable = false)
+    private Marca marca;
+
+    @Column(name = "nombre_modelo", length = 50, nullable = false)
+    private String nombreModelo;
+ main
 }

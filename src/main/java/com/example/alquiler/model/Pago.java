@@ -23,6 +23,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @NoArgsConstructor
 @AllArgsConstructor
 
+package com.example.alquiler.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "pagos")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+ main
 public class Pago {
 
     @Id
@@ -39,6 +53,14 @@ public class Pago {
     @JoinColumn(name = "id_metodo_pago", nullable = false)
     private MetodoPago metodoPago;
 
+    @OneToOne
+    @JoinColumn(name = "id_alquiler", nullable = false, unique = true)
+    private Alquiler alquiler;
+
+    @Column(name = "fecha_pago")
+    private LocalDate fechaPago;
+ main
+
     @Column(name = "monto_total", precision = 10, scale = 2, nullable = false)
     private BigDecimal montoTotal;
 
@@ -47,4 +69,15 @@ public class Pago {
 
     @Column(name = "estado_pago", nullable = false, length = 20)
     private String estadoPago;
+
+    @ManyToOne
+    @JoinColumn(name = "id_metodo_pago")
+    private MetodoPago metodoPago;
+
+    @Column(name = "estado_pago", length = 30)
+    private String estadoPago;
+
+    @Column(name = "comentarios", columnDefinition = "TEXT")
+    private String comentarios;
+ main
 }

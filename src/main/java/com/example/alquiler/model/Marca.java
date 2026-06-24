@@ -17,6 +17,19 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
+package com.example.alquiler.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Table(name = "marcas")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+ main
 public class Marca {
 
     @Id
@@ -24,5 +37,10 @@ public class Marca {
     private Integer idMarca;
 
     @Column(name = "nombre_marca", nullable = false, length = 50)
+    @Column(name = "id_marca")
+    private Integer idMarca;
+
+    @Column(name = "nombre_marca", length = 50, nullable = false)
+ main
     private String nombreMarca;
 }

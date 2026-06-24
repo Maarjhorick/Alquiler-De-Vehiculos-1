@@ -25,6 +25,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+package com.example.alquiler.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "alquileres")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+ main
 public class Alquiler {
 
     @Id
@@ -41,6 +54,11 @@ public class Alquiler {
     private Vehiculo vehiculo;
 
     @Column(name = "fecha_reserva", nullable = false)
+    @Column(name = "licencia_conducir", length = 20)
+    private String licenciaConducir;
+
+    @Column(name = "fecha_reserva")
+ main
     private LocalDate fechaReserva;
 
     @Column(name = "fecha_inicio", nullable = false)
@@ -59,4 +77,7 @@ public class Alquiler {
     @OneToMany(mappedBy = "alquiler", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Pago> pagos;
+
+    private EstadoAlquiler estadoAlquiler;
+ main
 }

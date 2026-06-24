@@ -34,7 +34,7 @@ jobs:
           args: --severity-threshold=high
 
       - name: "6. Empaquetado: Construir Imagen Docker"
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/aquiler-api:latest .
+        run: "docker build -t ${{ secrets.DOCKER_USERNAME }}/aquiler-api:latest ."
 
       - name: "7. Escaneo de Vulnerabilidades del Imagen (Trivy)"
         uses: aquasecurity/trivy-action@master

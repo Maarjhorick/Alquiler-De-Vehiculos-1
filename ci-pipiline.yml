@@ -1,0 +1,50 @@
+name: CI DevSecOps Alquiler Vehiculos
+
+on:
+  pull_request:
+    [cite_start]branches: [ "develop", "main" ] [cite: 571, 574]
+
+jobs:
+  build-and-test:
+    [cite_start]runs-on: ubuntu-latest [cite: 575, 576]
+    steps:
+      - name: 1. Descargar Codigo Fuente
+        [cite_start]uses: actions/checkout@v3 [cite: 578, 579]
+
+      - name: 2. Configurar Entorno Java
+        [cite_start]uses: actions/setup-java@v3 [cite: 580, 581]
+        with:
+          [cite_start]java-version: '17' # Cambialo a tu versión (17 o 21) [cite: 355, 583]
+          [cite_start]distribution: 'temurin' [cite: 584]
+
+      - name: 3. Compilacion y Pruebas Unitarias (JaCoCo Coverage)
+        [cite_start]run: mvn clean verify [cite: 585]
+
+      - name: 4. Analisis de Calidad de Codigo (SonarCloud)
+        env:
+          [cite_start]GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} [cite: 586, 587]
+          [cite_start]SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} [cite: 588]
+        [cite_start]run: mvn sonar:sonar [cite: 589]
+
+      - name: 5. Analisis de Seguridad de Dependencias (Snyk SAST)
+        [cite_start]uses: snyk/actions/maven@master [cite: 590]
+        env:
+          [cite_start]SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} [cite: 591, 592]
+        with:
+          [cite_start]args: --severity-threshold=high [cite: 593, 594]
+
+      - name: 6. Empaquetado: Construir Imagen Docker
+        [cite_start]run: docker build -t ${{ secrets.DOCKER_USERNAME }}/alquiler-api:latest . [cite: 595]
+
+      - name: 7. Escaneo de Vulnerabilidades del Imagen (Trivy)
+        [cite_start]uses: aquasecurity/trivy-action@master [cite: 598, 599]
+        with:
+          [cite_start]image-ref: '${{ secrets.DOCKER_USERNAME }}/alquiler-api:latest' [cite: 600, 601]
+          format: 'table'
+          [cite_start]exit-code: '1' # El pipeline se caerá si detecta vulnerabilidades críticas [cite: 602, 603]
+          [cite_start]severity: 'CRITICAL,HIGH' [cite: 604]
+
+      - name: 8. Despliegue: Subir contenedor a Docker Hub
+        run: |
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+          docker push ${{ secrets.DOCKER_USERNAME }}/alquiler-api:latest [cite: 607, 610]

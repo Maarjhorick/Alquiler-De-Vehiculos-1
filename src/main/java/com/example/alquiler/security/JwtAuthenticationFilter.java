@@ -1,4 +1,4 @@
-package com.example.alquiler_de_vehiculos.security;
+package com.example.alquiler.security;
 
 import java.io.IOException;
 
@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
+
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
@@ -25,6 +26,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+        
         String header = request.getHeader("Authorization");
         if (header == null || !header.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
@@ -34,11 +36,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         try {
             String token = header.substring(7);
             String username = jwtService.obtenerUsername(token);
+            
             if (SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                
                 if (jwtService.esValido(token, userDetails)) {
-                    UsernamePasswordAuthenticationToken authentication =
-                            new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                    UsernamePasswordAuthenticationToken authentication = 
+                        new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                    
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
@@ -46,6 +51,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         } catch (RuntimeException exception) {
             SecurityContextHolder.clearContext();
         }
+        
         filterChain.doFilter(request, response);
     }
 }

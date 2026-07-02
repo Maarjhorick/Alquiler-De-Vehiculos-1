@@ -1,15 +1,4 @@
-package com.example.alquiler_de_vehiculos.service;
-
-import com.example.alquiler_de_vehiculos.model.Vehiculo;
-import com.example.alquiler_de_vehiculos.model.Modelo;
-import com.example.alquiler_de_vehiculos.model.TipoVehiculo;
-import com.example.alquiler_de_vehiculos.model.Combustible;
-import com.example.alquiler_de_vehiculos.model.EstadoVehiculo;
-import com.example.alquiler_de_vehiculos.repository.VehiculoRepository;
-import com.example.alquiler_de_vehiculos.repository.ModeloRepository;
-import com.example.alquiler_de_vehiculos.repository.TipoVehiculoRepository;
-import com.example.alquiler_de_vehiculos.repository.CombustibleRepository;
-import com.example.alquiler_de_vehiculos.repository.EstadoVehiculoRepository;
+package com.example.alquiler.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,10 +7,23 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
+
+import com.example.alquiler.model.Combustible;
+import com.example.alquiler.model.EstadoVehiculo;
+import com.example.alquiler.model.Modelo;
+import com.example.alquiler.model.TipoVehiculo;
+import com.example.alquiler.model.Vehiculo;
+import com.example.alquiler.repository.CombustibleRepository;
+import com.example.alquiler.repository.EstadoVehiculoRepository;
+import com.example.alquiler.repository.ModeloRepository;
+import com.example.alquiler.repository.TipoVehiculoRepository;
+import com.example.alquiler.repository.VehiculoRepository;
+
 import jakarta.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor
+
 public class VehiculoService {
 
     private final VehiculoRepository vehiculoRepository;
@@ -82,22 +84,7 @@ public class VehiculoService {
         vehiculoExistente.setNumeroVin(vehiculoDetalles.getNumeroVin());
         vehiculoExistente.setPrecioDia(vehiculoDetalles.getPrecioDia());
         vehiculoExistente.setPrecioHora(vehiculoDetalles.getPrecioHora());
-
-        // Buscar entidades relacionadas en BD antes de asignar
-        Modelo modelo = modeloRepository.findById(vehiculoDetalles.getModelo().getIdModelo())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Modelo no encontrado"));
-        TipoVehiculo tipo = tipoRepository.findById(vehiculoDetalles.getTipo().getIdTipo())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Tipo de vehiculo no encontrado"));
-        Combustible combustible = combustibleRepository.findById(vehiculoDetalles.getCombustible().getIdCombustible())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Combustible no encontrado"));
-        EstadoVehiculo estado = estadoRepository.findById(vehiculoDetalles.getEstado().getIdEstado())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Estado no encontrado"));
-
-        vehiculoExistente.setModelo(modelo);
-        vehiculoExistente.setTipo(tipo);
-        vehiculoExistente.setCombustible(combustible);
-        vehiculoExistente.setEstado(estado);
-
-        return vehiculoRepository.save(vehiculoExistente);
+        return vehiculoExistente;
+        
     }
 }

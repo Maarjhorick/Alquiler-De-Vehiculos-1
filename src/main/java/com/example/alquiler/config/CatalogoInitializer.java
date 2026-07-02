@@ -1,29 +1,30 @@
-package com.example.alquiler_de_vehiculos.config;
+package com.example.alquiler.config;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.example.alquiler_de_vehiculos.model.EstadoAlquiler;
-import com.example.alquiler_de_vehiculos.model.EstadoVehiculo;
-import com.example.alquiler_de_vehiculos.repository.EstadoAlquilerRepository;
-import com.example.alquiler_de_vehiculos.repository.EstadoVehiculoRepository;
-import com.example.alquiler_de_vehiculos.model.Combustible;
-import com.example.alquiler_de_vehiculos.model.Marca;
-import com.example.alquiler_de_vehiculos.model.MetodoPago;
-import com.example.alquiler_de_vehiculos.model.Modelo;
-import com.example.alquiler_de_vehiculos.model.Rol;
-import com.example.alquiler_de_vehiculos.model.TipoVehiculo;
-import com.example.alquiler_de_vehiculos.repository.CombustibleRepository;
-import com.example.alquiler_de_vehiculos.repository.MarcaRepository;
-import com.example.alquiler_de_vehiculos.repository.MetodoPagoRepository;
-import com.example.alquiler_de_vehiculos.repository.ModeloRepository;
-import com.example.alquiler_de_vehiculos.repository.RolRepository;
-import com.example.alquiler_de_vehiculos.repository.TipoVehiculoRepository;
+import com.example.alquiler.model.Combustible;
+import com.example.alquiler.model.EstadoAlquiler;
+import com.example.alquiler.model.EstadoVehiculo;
+import com.example.alquiler.model.Marca;
+import com.example.alquiler.model.MetodoPago;
+import com.example.alquiler.model.Modelo;
+import com.example.alquiler.model.Rol;
+import com.example.alquiler.model.TipoVehiculo;
+import com.example.alquiler.repository.CombustibleRepository;
+import com.example.alquiler.repository.EstadoAlquilerRepository;
+import com.example.alquiler.repository.EstadoVehiculoRepository;
+import com.example.alquiler.repository.MarcaRepository;
+import com.example.alquiler.repository.MetodoPagoRepository;
+import com.example.alquiler.repository.ModeloRepository;
+import com.example.alquiler.repository.RolRepository;
+import com.example.alquiler.repository.TipoVehiculoRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
+
 public class CatalogoInitializer implements CommandLineRunner {
 
     private final EstadoVehiculoRepository estadoVehiculoRepository;
@@ -47,7 +48,7 @@ public class CatalogoInitializer implements CommandLineRunner {
     }
 
     private void crearEstadoVehiculo(String nombre) {
-        estadoVehiculoRepository.findByNombreEstadoIgnoreCase(nombre)
+        estadoVehiculoRepository.findByNombreEstado(nombre)
                 .orElseGet(() -> estadoVehiculoRepository.save(new EstadoVehiculo(null, nombre)));
     }
 

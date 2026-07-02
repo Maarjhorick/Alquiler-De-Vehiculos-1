@@ -1,4 +1,4 @@
-package com.example.alquiler_de_vehiculos.config;
+package com.example.alquiler.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import com.example.alquiler_de_vehiculos.security.JwtAuthenticationFilter;
+
+import com.example.alquiler.security.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity

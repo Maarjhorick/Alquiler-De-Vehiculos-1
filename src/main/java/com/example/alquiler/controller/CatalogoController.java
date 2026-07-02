@@ -1,4 +1,4 @@
-package com.example.alquiler_de_vehiculos.controller;
+package com.example.alquiler.controller;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -6,6 +6,24 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.alquiler.model.Combustible;
+import com.example.alquiler.model.Marca;
+import com.example.alquiler.model.MetodoPago;
+import com.example.alquiler.model.Modelo;
+import com.example.alquiler.model.TipoVehiculo;
+import com.example.alquiler.repository.CombustibleRepository;
+import com.example.alquiler.repository.EstadoAlquilerRepository;
+import com.example.alquiler.repository.EstadoVehiculoRepository;
+import com.example.alquiler.repository.MarcaRepository;
+import com.example.alquiler.repository.MetodoPagoRepository;
+import com.example.alquiler.repository.ModeloRepository;
+import com.example.alquiler.repository.RolRepository;
+import com.example.alquiler.repository.TipoVehiculoRepository;
+import com.example.alquiler.service.CatalogoService;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -14,26 +32,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import java.util.List;
 
-import com.example.alquiler_de_vehiculos.model.Combustible;
-import com.example.alquiler_de_vehiculos.model.Marca;
-import com.example.alquiler_de_vehiculos.model.MetodoPago;
-import com.example.alquiler_de_vehiculos.model.Modelo;
-import com.example.alquiler_de_vehiculos.model.TipoVehiculo;
-import com.example.alquiler_de_vehiculos.repository.CombustibleRepository;
-import com.example.alquiler_de_vehiculos.repository.EstadoAlquilerRepository;
-import com.example.alquiler_de_vehiculos.repository.EstadoVehiculoRepository;
-import com.example.alquiler_de_vehiculos.repository.MarcaRepository;
-import com.example.alquiler_de_vehiculos.repository.MetodoPagoRepository;
-import com.example.alquiler_de_vehiculos.repository.ModeloRepository;
-import com.example.alquiler_de_vehiculos.repository.RolRepository;
-import com.example.alquiler_de_vehiculos.repository.TipoVehiculoRepository;
-
-import lombok.RequiredArgsConstructor;
-import com.example.alquiler_de_vehiculos.service.CatalogoService;
-
 @RestController
 @RequestMapping("/api/catalogos")
 @RequiredArgsConstructor
+
 public class CatalogoController {
 
     private final MarcaRepository marcaRepository;

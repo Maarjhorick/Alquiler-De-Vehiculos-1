@@ -1,4 +1,4 @@
-package com.example.alquiler_de_vehiculos.controller;
+package com.example.alquiler.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.alquiler_de_vehiculos.dto.AuthResponse;
-import com.example.alquiler_de_vehiculos.dto.LoginRequest;
-import com.example.alquiler_de_vehiculos.dto.RegistroRequest;
-import com.example.alquiler_de_vehiculos.service.AuthService;
+import com.example.alquiler.dto.AuthResponse;
+import com.example.alquiler.dto.LoginRequest;
+import com.example.alquiler.dto.RegistroRequest;
+import com.example.alquiler.service.AuthService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+
 public class AuthController {
 
     private final AuthService authService;

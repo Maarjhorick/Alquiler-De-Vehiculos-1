@@ -1,19 +1,17 @@
-package com.example.alquiler_de_vehiculos.security;
+package com.example.alquiler.security;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
-
 import javax.crypto.SecretKey;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Value; // <-- El correcto de Spring
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-
 @Service
+
 public class JwtService {
 
     private final SecretKey key;

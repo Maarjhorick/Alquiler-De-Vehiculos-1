@@ -1,7 +1,9 @@
-package com.example.alquiler_de_vehiculos.model;
+package com.example.alquiler.model;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import lombok.*;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -13,31 +15,17 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "alquileres")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-package com.example.alquiler.model;
-
-import jakarta.persistence.*;
-import lombok.*;
-import java.time.LocalDate;
-
-@Entity
-@Table(name = "alquileres")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
- main
+
 public class Alquiler {
 
     @Id
@@ -52,13 +40,10 @@ public class Alquiler {
     @ManyToOne
     @JoinColumn(name = "id_vehiculo", nullable = false)
     private Vehiculo vehiculo;
-
-    @Column(name = "fecha_reserva", nullable = false)
     @Column(name = "licencia_conducir", length = 20)
     private String licenciaConducir;
 
-    @Column(name = "fecha_reserva")
- main
+    @Column(name = "fecha_reserva", nullable = false)
     private LocalDate fechaReserva;
 
     @Column(name = "fecha_inicio", nullable = false)
@@ -79,5 +64,5 @@ public class Alquiler {
     private List<Pago> pagos;
 
     private EstadoAlquiler estadoAlquiler;
- main
+
 }

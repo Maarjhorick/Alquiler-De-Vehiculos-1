@@ -1,18 +1,19 @@
-package com.example.alquiler_de_vehiculos.security;
+package com.example.alquiler.security;
 
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
-import com.example.alquiler_de_vehiculos.model.Usuario;
-import com.example.alquiler_de_vehiculos.repository.UsuarioRepository;
+import com.example.alquiler.model.Usuario;
+import com.example.alquiler.repository.UsuarioRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+
 public class CustomUserDetailService implements UserDetailsService {
 
     private final UsuarioRepository usuarioRepository;

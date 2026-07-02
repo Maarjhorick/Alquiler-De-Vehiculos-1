@@ -18,7 +18,10 @@ jobs:
           distribution: 'temurin'
 
       - name: 3. Compilacion y Pruebas Unitarias (JaCoCo Coverage)
-        run: mvn clean verify
+        run: mvn clean verify sonar:sonar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: 4. Analisis de Seguridad de Dependencias (Snyk SAST)
         run: |

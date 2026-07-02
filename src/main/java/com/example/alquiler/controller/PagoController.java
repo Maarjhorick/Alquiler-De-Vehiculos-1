@@ -1,4 +1,4 @@
-package com.example.alquiler_de_vehiculos.controller;
+package com.example.alquiler.controller;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.alquiler_de_vehiculos.model.Pago;
-import com.example.alquiler_de_vehiculos.service.PagoService;
+import com.example.alquiler.model.Pago;
+import com.example.alquiler.service.PagoService;
 
 import lombok.RequiredArgsConstructor;
 import jakarta.validation.constraints.DecimalMin;
@@ -21,6 +21,7 @@ import org.springframework.validation.annotation.Validated;
 @RequestMapping("/api/pagos")
 @RequiredArgsConstructor
 @Validated
+
 public class PagoController {
 
     private final PagoService pagoService;

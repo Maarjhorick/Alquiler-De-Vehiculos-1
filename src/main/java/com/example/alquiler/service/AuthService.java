@@ -1,32 +1,33 @@
-package com.example.alquiler_de_vehiculos.service;
+package com.example.alquiler.service;
 
 import java.time.LocalDateTime;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.security.authentication.AuthenticationManager;
 
-import com.example.alquiler_de_vehiculos.dto.AuthResponse;
-import com.example.alquiler_de_vehiculos.dto.LoginRequest;
-import com.example.alquiler_de_vehiculos.dto.RegistroRequest;
-import com.example.alquiler_de_vehiculos.model.Cliente;
-import com.example.alquiler_de_vehiculos.model.Rol;
-import com.example.alquiler_de_vehiculos.model.Usuario;
-import com.example.alquiler_de_vehiculos.repository.ClienteRepository;
-import com.example.alquiler_de_vehiculos.repository.RolRepository;
-import com.example.alquiler_de_vehiculos.repository.UsuarioRepository;
-import com.example.alquiler_de_vehiculos.security.CustomUserDetailService;
-import com.example.alquiler_de_vehiculos.security.JwtService;
+import com.example.alquiler.dto.AuthResponse;
+import com.example.alquiler.dto.LoginRequest;
+import com.example.alquiler.dto.RegistroRequest;
+import com.example.alquiler.model.Cliente;
+import com.example.alquiler.model.Rol;
+import com.example.alquiler.model.Usuario;
+import com.example.alquiler.repository.ClienteRepository;
+import com.example.alquiler.repository.RolRepository;
+import com.example.alquiler.repository.UsuarioRepository;
+import com.example.alquiler.security.CustomUserDetailService;
+import com.example.alquiler.security.JwtService;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+
 public class AuthService {
 
     private final UsuarioRepository usuarioRepository;

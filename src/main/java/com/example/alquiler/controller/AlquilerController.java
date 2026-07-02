@@ -1,4 +1,4 @@
-package com.example.alquiler_de_vehiculos.controller;
+package com.example.alquiler.controller;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.alquiler_de_vehiculos.model.Alquiler;
-import com.example.alquiler_de_vehiculos.service.AlquilerService;
+import com.example.alquiler.model.Alquiler;
+import com.example.alquiler.service.AlquilerService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;

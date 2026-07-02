@@ -1,4 +1,4 @@
-package com.example.alquiler_de_vehiculos.config;
+package com.example.alquiler.config;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;

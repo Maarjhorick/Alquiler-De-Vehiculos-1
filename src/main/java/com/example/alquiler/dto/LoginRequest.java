@@ -1,4 +1,4 @@
-package com.example.alquiler_de_vehiculos.dto;
+package com.example.alquiler.dto;
 
 import jakarta.validation.constraints.NotBlank;
 

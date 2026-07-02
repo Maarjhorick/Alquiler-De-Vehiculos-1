@@ -1,4 +1,4 @@
-package com.example.alquiler_de_vehiculos.model;
+package com.example.alquiler.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

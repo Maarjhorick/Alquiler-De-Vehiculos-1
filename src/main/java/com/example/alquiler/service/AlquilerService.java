@@ -1,28 +1,28 @@
-package com.example.alquiler_de_vehiculos.service;
+package com.example.alquiler.service;
 
 import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
-import com.example.alquiler_de_vehiculos.model.Alquiler;
-import com.example.alquiler_de_vehiculos.model.Cliente;
-import com.example.alquiler_de_vehiculos.model.EstadoVehiculo;
-import com.example.alquiler_de_vehiculos.model.EstadoAlquiler;
-import com.example.alquiler_de_vehiculos.model.Vehiculo;
-import com.example.alquiler_de_vehiculos.repository.AlquilerRepository;
-import com.example.alquiler_de_vehiculos.repository.ClienteRepository;
-import com.example.alquiler_de_vehiculos.repository.EstadoVehiculoRepository;
-import com.example.alquiler_de_vehiculos.repository.EstadoAlquilerRepository;
-import com.example.alquiler_de_vehiculos.repository.VehiculoRepository;
-
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.alquiler.model.Alquiler;
+import com.example.alquiler.model.Cliente;
+import com.example.alquiler.model.EstadoAlquiler;
+import com.example.alquiler.model.EstadoVehiculo;
+import com.example.alquiler.model.Vehiculo;
+import com.example.alquiler.repository.AlquilerRepository;
+import com.example.alquiler.repository.ClienteRepository;
+import com.example.alquiler.repository.EstadoAlquilerRepository;
+import com.example.alquiler.repository.EstadoVehiculoRepository;
+import com.example.alquiler.repository.VehiculoRepository;
+
 @Service
 @RequiredArgsConstructor
+
 public class AlquilerService {
 
     private final AlquilerRepository alquilerRepository;
@@ -52,7 +52,7 @@ public class AlquilerService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Vehiculo no disponible");
         }
 
-        EstadoVehiculo estadoNoDisponible = estadoVehiculoRepository.findByNombreEstadoIgnoreCase("NO DISPONIBLE")
+        EstadoVehiculo estadoNoDisponible = estadoVehiculoRepository.findByNombreEstado("NO DISPONIBLE")
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.CONFLICT,
                         "Estado de vehiculo NO DISPONIBLE no configurado"));
         EstadoAlquiler estadoActivo = estadoAlquilerRepository.findByEstadoAlquilerIgnoreCase("ACTIVO")
@@ -87,7 +87,7 @@ public class AlquilerService {
 
         alquiler.setFechaFinReal(fechaFinReal);
 
-        EstadoVehiculo estadoDisponible = estadoVehiculoRepository.findByNombreEstadoIgnoreCase("DISPONIBLE")
+        EstadoVehiculo estadoDisponible = estadoVehiculoRepository.findByNombreEstado("DISPONIBLE")
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.CONFLICT,
                         "Estado de vehiculo DISPONIBLE no configurado"));
         EstadoAlquiler estadoFinalizado = estadoAlquilerRepository.findByEstadoAlquilerIgnoreCase("FINALIZADO")

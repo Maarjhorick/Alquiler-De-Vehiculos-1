@@ -1,23 +1,25 @@
-package com.example.alquiler_de_vehiculos.service;
+package com.example.alquiler.service;
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
 
-import com.example.alquiler_de_vehiculos.model.Alquiler;
-import com.example.alquiler_de_vehiculos.model.MetodoPago;
-import com.example.alquiler_de_vehiculos.model.Pago;
-import com.example.alquiler_de_vehiculos.repository.AlquilerRepository;
-import com.example.alquiler_de_vehiculos.repository.MetodoPagoRepository;
-import com.example.alquiler_de_vehiculos.repository.PagoRepository;
-
 import jakarta.transaction.Transactional;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.alquiler.model.Pago;
+import com.example.alquiler.repository.AlquilerRepository;
+import com.example.alquiler.repository.MetodoPagoRepository;
+import com.example.alquiler.repository.PagoRepository;
+import com.example.alquiler.model.Alquiler;
+import com.example.alquiler.model.MetodoPago;
+
 @Service
 @RequiredArgsConstructor
+@Getter
+
 public class PagoService {
 
     private final PagoRepository pagoRepository;

@@ -1,4 +1,4 @@
-package com.example.alquiler_de_vehiculos.service;
+package com.example.alquiler.service;
 
 import java.util.List;
 
@@ -6,22 +6,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.example.alquiler_de_vehiculos.model.Combustible;
-import com.example.alquiler_de_vehiculos.model.Marca;
-import com.example.alquiler_de_vehiculos.model.MetodoPago;
-import com.example.alquiler_de_vehiculos.model.Modelo;
-import com.example.alquiler_de_vehiculos.model.TipoVehiculo;
-import com.example.alquiler_de_vehiculos.repository.CombustibleRepository;
-import com.example.alquiler_de_vehiculos.repository.MarcaRepository;
-import com.example.alquiler_de_vehiculos.repository.MetodoPagoRepository;
-import com.example.alquiler_de_vehiculos.repository.ModeloRepository;
-import com.example.alquiler_de_vehiculos.repository.TipoVehiculoRepository;
+import com.example.alquiler.model.Combustible;
+import com.example.alquiler.model.Marca;
+import com.example.alquiler.model.MetodoPago;
+import com.example.alquiler.model.Modelo;
+import com.example.alquiler.model.TipoVehiculo;
+import com.example.alquiler.repository.CombustibleRepository;
+import com.example.alquiler.repository.MarcaRepository;
+import com.example.alquiler.repository.MetodoPagoRepository;
+import com.example.alquiler.repository.ModeloRepository;
+import com.example.alquiler.repository.TipoVehiculoRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+
 public class CatalogoService {
 
     private final MarcaRepository marcaRepository;
@@ -67,7 +68,7 @@ public class CatalogoService {
                 .orElseThrow(() -> noEncontrado("Modelo"));
         Marca marca = marcaRepository.findById(datos.getMarca().getIdMarca())
                 .orElseThrow(() -> noEncontrado("Marca"));
-        modelo.setModelo(datos.getModelo());
+        modelo.setIdModelo(datos.getIdModelo());
         modelo.setMarca(marca);
         return modeloRepository.save(modelo);
     }

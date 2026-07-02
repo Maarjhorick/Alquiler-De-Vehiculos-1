@@ -28,11 +28,12 @@ jobs:
 
       - name: 5. Analisis de Seguridad de Dependencias (Snyk SAST)
         uses: snyk/actions/maven@master
+      
+      - name: 5b. Ejecutar Snyk Test
+        run: snyk test --severity-threshold=high
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          args: --severity-threshold=high
-
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} 
+          
       - name: "6. Empaquetado: Construir Imagen Docker"
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/aquiler-api:latest .
 

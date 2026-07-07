@@ -53,7 +53,7 @@ public class CatalogoInitializer implements CommandLineRunner {
     }
 
     private void crearEstadoAlquiler(String nombre) {
-        estadoAlquilerRepository.findByEstadoAlquilerIgnoreCase(nombre)
+        estadoAlquilerRepository.findByNombreEstadoIgnoreCase(nombre)
                 .orElseGet(() -> estadoAlquilerRepository.save(new EstadoAlquiler(null, nombre)));
     }
 

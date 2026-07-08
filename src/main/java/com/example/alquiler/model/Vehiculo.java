@@ -67,13 +67,6 @@ public class Vehiculo {
 
     @ManyToOne
     @JoinColumn(name = "id_combustible", nullable = false)
-    @NotNull
-    @Valid
-
-    private TipoVehiculo tipoVehiculo;
-
-    @ManyToOne
-    @JoinColumn(name = "id_combustible", nullable = false)
 
     private Combustible combustible;
 
@@ -82,7 +75,5 @@ public class Vehiculo {
     @NotNull
     @Valid
     private EstadoVehiculo estado;
-
-    private EstadoVehiculo estadoVehiculo;
 
 }

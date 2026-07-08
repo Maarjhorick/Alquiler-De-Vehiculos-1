@@ -63,6 +63,4 @@ public class Alquiler {
     @JsonIgnore
     private List<Pago> pagos;
 
-    private EstadoAlquiler estadoAlquiler;
-
 }

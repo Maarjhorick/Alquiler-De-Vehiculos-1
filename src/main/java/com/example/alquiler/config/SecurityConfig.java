@@ -33,6 +33,10 @@ public class SecurityConfig  {
                 
                 .requestMatchers("/api/mantenimiento/**").hasAnyRole("ADMIN", "EMPLEADO")
                 
+      //
+                .requestMatchers("/api/reportes/**").hasRole("ADMIN")
+
+
                 .requestMatchers("/api/**").hasAnyRole("ADMIN", "EMPLEADO")
                 .anyRequest().permitAll()
             )
